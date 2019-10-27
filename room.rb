@@ -4,7 +4,7 @@ class Room
   def initialize(room_number, songs, guests)
     @room_number = room_number
     @songs = songs
-    @guests = []
+    @guests = guests
   end
 
   def get_song_list

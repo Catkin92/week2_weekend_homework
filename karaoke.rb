@@ -7,4 +7,11 @@ class KaraokeClub
     @rooms = rooms
     @money = money
   end
+
+  def fire_alarm
+      for room in @rooms
+        room.remove_all_guests
+      end
+      return "Wooo-eee-ooo-eee"
+  end
 end

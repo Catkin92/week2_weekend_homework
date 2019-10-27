@@ -44,4 +44,15 @@ class TestKaraokeClub < MiniTest::Test
   def test_get_money
     assert_equal(100.00, @karaoke_club.money)
   end
+
+  def test_guests_in_rooms
+    assert_equal([@guest1, @guest2, @guest3], @room1.guests)
+  end
+
+  def test_fire_alarm
+    @karaoke_club.fire_alarm
+    assert_equal("Wooo-eee-ooo-eee", @karaoke_club.fire_alarm)
+    assert_equal([], @room1.guests)
+    assert_equal([], @room2.guests)
+  end
 end
