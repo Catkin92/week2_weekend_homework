@@ -13,6 +13,8 @@ class TestKaraokeClub < MiniTest::Test
     @guest2 = Guest.new("Eugene", 17.00, "Barbie Girl")
     @guest3 = Guest.new("Sandy", 6.00, "Sunshine on Leith")
     @guest4 = Guest.new("Juan", 13.00, "Heartbreak Hotel")
+    @guest5 = Guest.new("Kat", 8.00, "Country Roads")
+    @guest6 = Guest.new("Morag", 5.00, "Havana")
 
     @guests1 = [@guest1, @guest2, @guest3]
     @guests2 = [@guest4]
@@ -21,10 +23,10 @@ class TestKaraokeClub < MiniTest::Test
     @song2 = Song.new("Rock Me Amadeus", "Europop")
     @song3 = Song.new("I Will Always Love You", "Ballad")
 
-    @songs = [@song1, @song2, @song3]
+    @playlist = [@song1, @song2, @song3]
 
-    @room1 = Room.new(1, @songs, @guests1)
-    @room2 = Room.new(2, @songs, @guests2)
+    @room1 = Room.new(1, @playlist, @guests1)
+    @room2 = Room.new(2, @playlist, @guests2)
 
     @rooms = [@room1, @room2]
 
@@ -54,5 +56,17 @@ class TestKaraokeClub < MiniTest::Test
     assert_equal("Wooo-eee-ooo-eee", @karaoke_club.fire_alarm)
     assert_equal([], @room1.guests)
     assert_equal([], @room2.guests)
+  end
+
+  def test_add_guest_to_room
+    @karaoke_club.add_guest(@room2, @guest5)
+    assert_equal([@guest4, @guest5], @room2.guests)
+    assert_equal(107.00, @karaoke_club.money)
+    assert_equal(1.00, @guest5.wallet)
+  end
+
+  def test_add_guest_to_room__too_poor
+    @karaoke_club.add_guest(@room2, @guest6)
+    assert_equal("Sorry, you can't afford this room.", @karaoke_club.add_guest(@room2, @guest6))
   end
 end

@@ -17,13 +17,13 @@ class TestRoom < MiniTest::Test
     @song2 = Song.new("Rock Me Amadeus", "Europop")
     @song3 = Song.new("I Will Always Love You", "Ballad")
 
-    @songs = [@song1, @song2, @song3]
+    @playlist = [@song1, @song2, @song3]
 
     @new_song = Song.new("Jailhouse Rock", "Rock and Roll")
 
     @guests = []
 
-    @room1 = Room.new(1, @songs, @guests)
+    @room1 = Room.new(1, @playlist, @guests)
 
   end
 
@@ -45,12 +45,6 @@ class TestRoom < MiniTest::Test
 
   def test_have_song__false
     assert_equal("Song not available.", @room1.have_song(@room1, "Fly Me To The Moon"))
-  end
-
-  def test_add_guest_to_room
-    @room1.add_guest(@guest1)
-    @room1.add_guest(@guest2)
-    assert_equal([@guest1, @guest2], @room1.guests)
   end
 
   def test_remove_guest_from_room

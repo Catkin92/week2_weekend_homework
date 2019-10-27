@@ -1,14 +1,14 @@
 class Room
 
-  attr_reader :room_number, :songs, :guests
-  def initialize(room_number, songs, guests)
+  attr_reader :room_number, :playlist, :guests
+  def initialize(room_number, playlist, guests)
     @room_number = room_number
-    @songs = songs
+    @playlist = playlist
     @guests = guests
   end
 
   def get_song_list
-    @songs.map { |song| song.name }
+    @playlist.map { |song| song.name }
   end
 
 # how do I do this with .each?
@@ -21,10 +21,6 @@ class Room
       return "Song not available."
   end
 
-  def add_guest(guest)
-    @guests << guest
-  end
-
   def remove_guest(guest)
     @guests.delete(guest)
   end
@@ -34,6 +30,7 @@ class Room
   end
 
   def add_song(new_song)
-    @songs << new_song
+    @playlist << new_song
   end
+
 end
