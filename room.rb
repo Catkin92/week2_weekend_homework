@@ -32,4 +32,8 @@ class Room
   def remove_all_guests
     @guests.clear
   end
+
+  def add_song(new_song)
+    @songs << new_song
+  end
 end
