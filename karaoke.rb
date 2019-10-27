@@ -1,10 +1,10 @@
 class KaraokeClub
 
-  attr_reader :name, :number_of_rooms, :money
+  attr_reader :name, :rooms, :money
 
-  def initialize(name, number_of_rooms, money)
+  def initialize(name, rooms, money)
     @name = name
-    @number_of_rooms = number_of_rooms
+    @rooms = rooms
     @money = money
   end
 end

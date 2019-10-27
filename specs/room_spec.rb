@@ -44,4 +44,26 @@ class TestRoom < MiniTest::Test
   def test_have_song__false
     assert_equal("Song not available.", @room1.have_song(@room1, "Fly Me To The Moon"))
   end
+
+  def test_add_guest_to_room
+    @room1.add_guest(@guest1)
+    @room1.add_guest(@guest2)
+    assert_equal([@guest1, @guest2], @room1.guests)
+  end
+
+  def test_remove_guest_from_room
+    @room1.add_guest(@guest1)
+    @room1.add_guest(@guest2)
+    @room1.add_guest(@guest3)
+    @room1.remove_guest(@guest1)
+    assert_equal([@guest2, @guest3], @room1.guests)
+  end
+
+  def test_remove_all_guests
+    @room1.add_guest(@guest1)
+    @room1.add_guest(@guest2)
+    @room1.add_guest(@guest3)
+    @room1.remove_all_guests
+    assert_equal([], @room1.guests)
+  end
 end

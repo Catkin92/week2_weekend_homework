@@ -20,4 +20,16 @@ class Room
       end
       return "Song not available."
   end
+
+  def add_guest(guest)
+    @guests << guest
+  end
+
+  def remove_guest(guest)
+    @guests.delete(guest)
+  end
+
+  def remove_all_guests
+    @guests.clear
+  end
 end
